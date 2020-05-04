@@ -1,10 +1,26 @@
 pipeline {
-           agent any
-           stages {
-                stage("small_step") {
-                     steps {
-                          echo 'Hello From Jenkins!'
-                     }
-                }
-           }
-      }
+    agent any
+    stages {
+        stage('Devops Install') {
+            steps {
+                sh 'yum install epel-release'
+				sh 'yum install nodejs'
+            }
+        }
+		stage('Devops From github') {
+            steps {
+                sh 'git clone https://github.com/tothti/jenkins.git'
+            }
+        }
+		stage('Devops Copy Files') {
+            steps {
+                sh 'echo "passz!" :)'
+            }
+        }
+		stage('Devops Open port') {
+            steps {
+                 sh 'firewall-cmd --permanent --add-port 8888/tcp'
+            }
+        }
+    }
+}
