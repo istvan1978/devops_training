@@ -1,0 +1,10 @@
+pipeline {
+           agent any
+           stages {
+                stage("small_step") {
+                     steps {
+                          echo 'Hello From Jenkins!'
+                     }
+                }
+           }
+      }
